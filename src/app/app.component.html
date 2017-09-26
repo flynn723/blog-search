@@ -1,0 +1,26 @@
+<div class="container">
+  <md-card class="innercontainer">
+
+    <md-toolbar color="primary" >{{appTitle}}</md-toolbar>
+
+    <md-input-container  class="search-input" >
+      <input mdInput  placeholder="Post Search" aria-label="Post" [mdAutocomplete]="auto" [(ngModel)]="search">
+    </md-input-container>
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let post of Posts | filter: search" [value]="post.title" (click)="setActive(post)">
+        <span >{{post.title}}</span>
+      </md-option>
+    </md-autocomplete>
+
+    <div class="post">
+      <label class="post-label">
+        {{ActivePosttitle}}
+      </label>
+      <hr>
+      <p class="post-paragraph" style="text-align:left">
+        {{ActivePostContent}}
+      </p>
+    </div>
+
+  </md-card>
+</div>
